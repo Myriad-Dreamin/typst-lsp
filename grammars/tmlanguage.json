@@ -233,7 +233,7 @@
                     }
                 },
                 {
-                    "begin": "((#)if|(?<=(}|])\\s*)else)\\b",
+                    "begin": "(?:(#)if|(?:}(?:\\s*)|](?:\\s*))else)\\b",
                     "end": "\n|(?=])|(?<=}|])",
                     "beginCaptures": {
                         "0": {
@@ -318,7 +318,7 @@
                 },
                 {
                     "comment": "Function arguments",
-                    "begin": "(?<=#[[:alpha:]_][[:alnum:]_-]*!?)\\(",
+                    "begin": "(?:#)([[A-Za-z]_][[0-9]_-]*!?(?=\\())\\(",
                     "end": "\\)",
                     "captures": {
                         "0": {
@@ -419,7 +419,7 @@
                 },
                 {
                     "name": "keyword.operator.arithmetic.typst",
-                    "match": "\\+|\\*|/|(?<![[:alpha:]_][[:alnum:]_-]*)-(?![:alnum:]_-]*[[:alpha:]_])"
+                    "match": "\\+|\\|/|(?<![[:alpha:]])(?<!\\w)(?<!\\d)-(?![[:alnum:]-][[:alpha:]_])"
                 },
                 {
                     "name": "keyword.operator.word.typst",
@@ -456,11 +456,11 @@
                 {
                     "comment": "Function name",
                     "name": "entity.name.function.typst",
-                    "match": "(?<=\\bshow\\s*)\\b[[:alpha:]_][[:alnum:]_-]*(?=\\s*[:.])"
+                    "match": "(?:\\bshow\\s*\\b([[:alpha:]][[:alnum:]-])(?=\\s[:.]))"
                 },
                 {
                     "comment": "Function arguments",
-                    "begin": "(?<=\\b[[:alpha:]_][[:alnum:]_-]*!?)\\(",
+                    "begin": "(?:\\b([[:alpha:]][[:alnum:]-]*!?)\\()",
                     "end": "\\)",
                     "captures": {
                         "0": {
